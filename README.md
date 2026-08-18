@@ -86,11 +86,13 @@ source ~/.bashrc   # bzw. neue Shell öffnen
 > `dotnet run` → `Hello, World!`, `dotnet run -- "Max"` → `Hello, Max!`. Build-Artefakte
 > (`bin/`, `obj/`) sind per `.gitignore` ausgeschlossen.
 >
-> ⚠️ **Windows — [Offen] (nur dokumentiert, nicht real getestet):** `build.ps1` ist als
-> PowerShell-Spiegel von `build.sh` angelegt. Der **reale Windows-Smoke-Test** konnte auf
-> dieser (Linux-)Entwicklungsumgebung **nicht ausgeführt** werden (kein PowerShell
-> /`pwsh` lokal). Er ist über einen **Windows-Dev-Rechner oder die CI-Pipeline**
-> (Windows-Runner, `powershell -File build.ps1`) nachzuholen.
+> ⚠️ ~~**Windows — [Offen]**~~ → **✅ Windows via CI verifiziert (2026-08-18):**
+> `build.ps1` läuft im GitHub Actions Workflow `.github/workflows/ci.yml` auf einem echten
+> Windows-Runner (`windows-latest`, `powershell -File build.ps1`) und besteht Build + Smoke-Test.
+> Beide Matrix-Jobs (Linux/Windows) = **success** (Run für Commit `5ab6aec`).
+> Self-Hosted-Runner (`D:\actions-runner` auf Paddys Rechner) wurde **bewusst nicht**
+> verwendet: kein Repo-Runner registriert + RCE-Risiko auf der privaten Maschine; der
+> GitHub-hosted Windows-Runner erledigt denselben Test sicher.
 
 ## Lizenz / Status
 
