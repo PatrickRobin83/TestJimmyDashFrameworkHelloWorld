@@ -12,6 +12,7 @@ Eine einfache **C#-Hallo-Welt-Konsolenanwendung** als Demo-/Einstiegsprojekt.
 |---|---|
 | `Program.cs` | Quellcode der Hello-World-Anwendung |
 | `TestJimmyDashFramworkHelloWorld.csproj` | .NET-Projektdatei (TargetFramework net8.0) |
+| `build.sh` / `build.ps1` | Build- + Smoke-Test-Skripte (Linux/macOS bzw. Windows) |
 | `README.md` | Diese Projektübersicht |
 | `docs/ANLEITUNG.md` | Schritt-für-Schritt-Anleitung (Build, Run, Hinweise) |
 
@@ -31,14 +32,23 @@ Erwartete Ausgabe:
 Hello, World!
 ```
 
-### Automatischer Build + Smoke-Test (build.sh)
+### Automatischer Build + Smoke-Test (build.sh / build.ps1)
+
+**Linux/macOS:**
 
 ```bash
 bash build.sh      # build + Lauf-Check (erwartet "Hello, World!")
 ```
 
-Das Skript setzt den dotnet-PATH automatisch (Fallback `/data/.dotnet`) und
-beendet sich mit Fehlercode, wenn Build oder Smoke-Test fehlschlagen.
+**Windows (PowerShell):**
+
+```powershell
+.\build.ps1        # build + Lauf-Check (erwartet "Hello, World!")
+```
+
+Beide Skripte setzen den dotnet-PATH automatisch (Fallback `/data/.dotnet`
+bzw. `DOTNET_ROOT`), führen `dotnet build` aus und verifizieren den Lauf.
+Sie beenden sich mit Fehlercode, wenn Build oder Smoke-Test fehlschlagen.
 
 ## Installationsweg (dotnet unter /data/.dotnet)
 
