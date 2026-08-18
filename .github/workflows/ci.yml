@@ -1,0 +1,62 @@
+# -----------------------------------------------------------------------------
+#   Filename          : ci.yml
+#   Created By        : Riker (devops) — DevOps Engineer, Entwicklung
+#   Created On        : 2026-08-18
+#   Last Modified By  : Riker (devops)
+#   Last Modified On  : 2026-08-18
+#   Beschreibung      : CI-Pipeline (GitHub Actions) für TestJimmyDashFramworkHelloWorld.
+#                       Führt auf Ubuntu + Windows (Matrix) den .NET-8-Build und
+#                       den jeweiligen Smoke-Test (build.sh / build.ps1) aus.
+#                       Linux  → build.sh  (bash)
+#                       Windows → build.ps1 (powershell -File; Windows PowerShell ist im Runner enthalten)
+#   Trigger           : push + pull_request auf default-Branch (master)
+#   Exit-Verhalten    : Build/Test-Fehler → Job rot (Exit-Code != 0 wird weitergegeben)
+# -----------------------------------------------------------------------------
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# Nur eine aktive Pipeline pro Branch/PR (kein Doppel-Queue bei schnellen Pushes).
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build + Smoke-Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false            # Beide Plattformen unabhängig durchlaufen lassen
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x   # .NET SDK 8.0 (LTS), passend zum TargetFramework net8.0
+
+      - name: dotnet info
+        run: dotnet --info
+
+      # --- Linux: build.sh (Build + Smoke-Test in einem Schritt) -------------
+      - name: Build + Smoke-Test (Linux)
+        if: runner.os == 'Linux'
+        run: bash build.sh
+
+      # --- Windows: build.ps1 über Windows PowerShell (powershell -File) ------
+      # GitHub-hosted Windows-Runner enthalten Windows PowerShell (powershell.exe).
+      # core build.ps1 ist ein reines PowerShell-Skript (kein pwsh-only-Code),
+      # daher läuft es unter 'powershell -File build.ps1' identisch.
+      - name: Build + Smoke-Test (Windows)
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: powershell -File build.ps1
