@@ -2,9 +2,9 @@
 #   Filename          : ci.yml
 #   Created By        : Riker (devops) — DevOps Engineer, Entwicklung
 #   Created On        : 2026-08-18
-#   Last Modified By  : Riker (devops)
+#   Last Modified By  : Nora (support) — Namenskorrektur Repo auf ...FrameworkHelloWorld
 #   Last Modified On  : 2026-08-18
-#   Beschreibung      : CI-Pipeline (GitHub Actions) für TestJimmyDashFramworkHelloWorld.
+#   Beschreibung      : CI-Pipeline (GitHub Actions) für TestJimmyDashFrameworkHelloWorld.
 #                       Führt auf Ubuntu + Windows (Matrix) den .NET-8-Build und
 #                       den jeweiligen Smoke-Test (build.sh / build.ps1) aus.
 #                       Linux  → build.sh  (bash)
