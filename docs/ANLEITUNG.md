@@ -43,9 +43,9 @@ brew install --cask dotnet-sdk
 ## 2. Projektstruktur
 
 ```
-TestJimmyDashFramworkHelloWorld/
+TestJimmyDashFrameworkHelloWorld/   # Clone-Ordner nach Umbenennung (Repo-Name)
 ├── Program.cs                          # Quellcode (Hello-World + Begrüßung)
-├── TestJimmyDashFramworkHelloWorld.csproj   # Projektdatei (net8.0)
+├── TestJimmyDashFramworkHelloWorld.csproj   # Projektdatei (net8.0, Name bewusst beibehalten)
 ├── README.md                           # Übersicht
 ├── docs/
 │   └── ANLEITUNG.md                    # diese Anleitung
@@ -59,7 +59,7 @@ TestJimmyDashFramworkHelloWorld/
 Im Projektordner:
 
 ```bash
-cd TestJimmyDashFramworkHelloWorld
+cd TestJimmyDashFrameworkHelloWorld   # Ordner = Clone-Name des (umbenannten) Repos
 dotnet build
 ```
 
