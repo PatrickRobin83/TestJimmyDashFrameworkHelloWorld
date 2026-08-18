@@ -1,10 +1,13 @@
-# TestJimmyDashFramworkHelloWorld
+# TestJimmyDashFrameworkHelloWorld
 
 Eine einfache **C#-Hallo-Welt-Konsolenanwendung** als Demo-/Einstiegsprojekt.
 
-> Hinweis zur Namensgebung: Der Reposit­ory-Name `TestJimmyDashFramworkHelloWorld`
-> (inkl. Schreibweise "Framwork") ist der verbindliche Remotename. Eine Umbenennung
-> auf `TestJimmyDashFrameworkHelloWorld` wurde separat geprüft; siehe ANLEITUNG §6.
+> **Namenskorrektur (18.08.2026):** Das Repository wurde von `TestJimmyDashFramworkHelloWorld`
+> (Tippfehler) auf **`TestJimmyDashFrameworkHelloWorld`** umbenannt. Der neue Name ist
+> verbindlich; die alte URL leitet automatisch weiter (siehe `docs/ANLEITUNG.md` §6).
+>
+> Hinweis: Die **Projektdatei** heißt weiterhin `TestJimmyDashFramworkHelloWorld.csproj`
+> (interner Projektname, bewusst nicht umbenannt — siehe §6).
 
 ## Inhalt
 

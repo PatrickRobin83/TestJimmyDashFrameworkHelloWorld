@@ -119,22 +119,17 @@ ohne Konsolenein-/ausgabe.
 
 ## 6. Hinweise zur Repository-Namensgebung
 
-- Der **Remote-Reposit­ory-Name** ist `TestJimmyDashFramworkHelloWorld`
-  (Schreibweise "Framwork" ohne zweites "e" nach "w").
-- Soll künftig die **korrigierte** Schreibweise `TestJimmyDashFrameworkHelloWorld`
-  gewünscht sein, ist das eine **Umbenennung** — siehe unten "Umbenennung (optional)".
+- Der **Remote-Repository-Name** ist seit 18.08.2026 **`TestJimmyDashFrameworkHelloWorld`**
+  (korrigierte Schreibweise, ehemals `TestJimmyDashFramworkHelloWorld` mit Tippfehler).
+- Die Umbenennung wurde per `gh repo rename` durchgeführt (Owner/Admin-Recht). Die **alte URL
+  leitet automatisch** auf den neuen Namen weiter — bestehende Klone/Verweise funktionieren weiter.
+- **Projektdatei:** Die `.csproj`-Datei heißt bewusst weiterhin `TestJimmyDashFramworkHelloWorld.csproj`
+  (interner Projekt-/AssemblyName, kein Repo-Name). Sie wurde im Zuge der Repo-Umbenennung **nicht**
+  umbenannt, um Build-/Verweisseffekte zu vermeiden. Soll auch der Projektname korrigiert werden,
+  ist das ein separater Build-Eingriff (eigener Auftrag).
 
-### Umbenennung (optional)
-
-Nur durch einen Berechtigten (Owner/Admin) durchzuführen:
-
-```bash
-# Neues, korrekt benanntes Repo anlegen und bestehende Inhalte übertragen
-gh repo create TestJimmyDashFrameworkHelloWorld --public --source . --push
-```
-
-Das **ersetzt** den alten Namen. Danach `README.md` und diese Anleitung entsprechend
-aktualisieren.
+Die frühere Option „Neues Repo anlegen und Inhalte übertragen" ist damit **überholt** —
+`gh repo rename` hat den bestehenden Namen in-place korrigiert.
 
 ---
 
