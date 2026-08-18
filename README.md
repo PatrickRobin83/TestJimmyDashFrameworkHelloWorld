@@ -81,10 +81,16 @@ source ~/.bashrc   # bzw. neue Shell öffnen
 
 ## Build-Status
 
-> ✅ **Verifiziert (2026-08-18):** `dotnet build` läuft mit **0 Warnings / 0 Errors**
-> (SDK 8.0, Ziel net8.0; SDK-Pfad `/data/.dotnet`). Laufzeit bestätigt:
-> `dotnet run` → `Hello, World!`, `dotnet run -- "Max"` → `Hello, Max!`.
-> Build-Artefakte (`bin/`, `obj/`) sind per `.gitignore` ausgeschlossen.
+> ✅ **Linux/macOS — verifiziert (2026-08-18):** `build.sh` bzw. `dotnet build` läuft mit
+> **0 Warnings / 0 Errors** (SDK 8.0, net8.0; SDK-Pfad `/data/.dotnet`). Laufzeit bestätigt:
+> `dotnet run` → `Hello, World!`, `dotnet run -- "Max"` → `Hello, Max!`. Build-Artefakte
+> (`bin/`, `obj/`) sind per `.gitignore` ausgeschlossen.
+>
+> ⚠️ **Windows — [Offen] (nur dokumentiert, nicht real getestet):** `build.ps1` ist als
+> PowerShell-Spiegel von `build.sh` angelegt. Der **reale Windows-Smoke-Test** konnte auf
+> dieser (Linux-)Entwicklungsumgebung **nicht ausgeführt** werden (kein PowerShell
+> /`pwsh` lokal). Er ist über einen **Windows-Dev-Rechner oder die CI-Pipeline**
+> (Windows-Runner, `powershell -File build.ps1`) nachzuholen.
 
 ## Lizenz / Status
 
